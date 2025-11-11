@@ -11,9 +11,10 @@ import SectionWithCollapse from '@/components/sections/SectionWithCollapse.vue';
       <b-col cols="12" sm="8" class="text-center">
         <SectionWithCollapse
         h2="¡Hola!, Soy Manu"
-        h1="Desarrollador web"
+        h1="Ingeniero de software"
         :h1Uppercase="true"
-        h3="WebMaster - Palace Resorts / Baglioni ITA"
+        h1Font="anton"
+        h3="Desarrollador Frontend - WebMaster - Palace Resorts / Baglioni ITA"
         >
         </SectionWithCollapse>
       </b-col>
