@@ -15,9 +15,17 @@ const props = defineProps({
         type: String,
         default: 'Hola soy h2'
     },
+    h3Font: {
+        type:String,
+        default: 'roboto-mono'
+    },
     h1Uppercase: {
         type: Boolean,
         default: true
+    },
+    h1Font: {
+        type:String,
+        default:'anton'
     },
     collapseId: {
         type: String,
@@ -44,10 +52,12 @@ const props = defineProps({
         v-bind:level="1"
         v-bind:text="h1"
         v-bind:uppercase="h1Uppercase"
+        v-bind:font="h1Font"
         />
         <BaseHeading
         v-bind:level="3"
         v-bind:text="h3"
+        v-bind:font="h3Font"
         />
         <BaseCollapse
       :id="collapseId"
