@@ -1,5 +1,5 @@
 <script setup>
-
+import SectionWithCollapse from '@/components/sections/SectionWithCollapse.vue';
 </script>
 
 <template>
@@ -9,7 +9,13 @@
         <h2>container</h2>
       </b-col>
       <b-col cols="12" sm="8" class="text-center">
-        <h2>container</h2>
+        <SectionWithCollapse
+        h2="¡Hola!, Soy Manu"
+        h1="Desarrollador web"
+        :h1Uppercase="true"
+        h3="WebMaster - Palace Resorts / Baglioni ITA"
+        >
+        </SectionWithCollapse>
       </b-col>
       <b-col cols="0" sm="2" class="text-center">
         <h2>container</h2>
