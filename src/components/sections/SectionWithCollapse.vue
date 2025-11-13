@@ -1,6 +1,7 @@
 <script setup>
 import BaseCollapse from '@/components/ui/BaseCollapse.vue';
 import BaseHeading from '@/components/ui/BaseHeading.vue';
+import { Icon } from '@iconify/vue';
 
 const props = defineProps({
     h2: {
@@ -66,8 +67,8 @@ const props = defineProps({
       variant="round"
     >
       <div class="links-col">
-        <a href="https://www.linkedin.com/in/manuel-jes%C3%BAs-rej%C3%B3n-santana-83564015a/" class="collapse-link">Linkedin</a>
-        <a href="https://www.upwork.com/freelancers/~0112e01210080eef35?mp_source=share" class="collapse-link">UpWork</a>
+        <a href="https://www.linkedin.com/in/manuel-jes%C3%BAs-rej%C3%B3n-santana-83564015a/" class="collapse-link">Linkedin <Icon icon="streamline-sharp:link-share-2" width="18" height="18" /></a>
+        <a href="https://www.upwork.com/freelancers/~0112e01210080eef35?mp_source=share" class="collapse-link">UpWork <Icon icon="streamline-sharp:link-share-2" width="18" height="18"/></a>
       </div>
     </BaseCollapse>
     </section>
@@ -81,6 +82,9 @@ const props = defineProps({
   gap: .8rem;
 }
 .collapse-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   text-decoration: none;
   font-weight: 400;
   transition: all .3s ease;
