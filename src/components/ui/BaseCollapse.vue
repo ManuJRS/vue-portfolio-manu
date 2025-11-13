@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { Icon } from '@iconify/vue';
 
 const open = ref(false)
 const props = defineProps ({
@@ -38,7 +39,6 @@ const props = defineProps ({
       <div class="collapse-content mt-3">
         <slot>
             <a href="#" class="collapse-link">Enlace 1</a>
-            <a href="#" class="collapse-link">Enlace 2</a>
         </slot>
     </div>
     </b-collapse>
