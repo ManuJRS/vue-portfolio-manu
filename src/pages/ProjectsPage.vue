@@ -1,5 +1,6 @@
 <script setup>
 import SectionWithCollapse from '@/components/sections/SectionWithCollapse.vue';
+import BaseIcon from '@/components/ui/BaseIcon.vue';
 </script>
 
 <template>
@@ -17,6 +18,9 @@ import SectionWithCollapse from '@/components/sections/SectionWithCollapse.vue';
         h3="WebMaster - Palace Resorts / Baglioni ITA"
         >
         </SectionWithCollapse>
+        <div class="text-center">
+          <BaseIcon />
+        </div>
       </b-col>
       <b-col cols="0" sm="2" class="text-center">
         <h2>container</h2>
