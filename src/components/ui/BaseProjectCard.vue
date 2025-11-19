@@ -142,8 +142,23 @@ const titleTextFontClass = computed(() => {
 
 @media (max-width: 768px) {
   .Card-body img {
-    transform: translateY(0);   /* resetea el desplazamiento */
+    transform: translateY(0);
   } 
+    .Card-body:hover img {
+    transform: translateY(0);
+  }
+
+  .Card-class {
+  border: #5a5959 2px solid;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.671);
+  background-color: rgba(187, 183, 183, 0.04);
+  outline: 1px solid rgba(242, 242, 242, .05);
+  cursor: pointer;
+  height: auto;
+  transition: background 0.5s ease, height 1s ease;
+}
   
 }
 </style>
