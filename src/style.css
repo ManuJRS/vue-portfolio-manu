@@ -1,6 +1,4 @@
 body {
-  background: linear-gradient(to bottom, #101010, #1B1C1A);
   margin: 0;
-
-  /* Elimina el margen predeterminado del body*/
+  background: linear-gradient(to bottom, #101010, #1B1C1A);
 }

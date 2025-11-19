@@ -6,8 +6,8 @@ import SectionProjectCard from '../components/sections/SectionProjectCard.vue';
 </script>
 
 <template>
-  <b-container fluid>
-    <b-row class="justify-content-center vh-100 my-4">
+  <b-container fluid class="content-home">
+    <b-row class="justify-content-center my-4">
       <b-col cols="0" sm="2" class="text-center">
         <h2>container</h2>
       </b-col>
@@ -48,3 +48,11 @@ import SectionProjectCard from '../components/sections/SectionProjectCard.vue';
     </b-row>
   </b-container>
 </template>
+
+<style scoped>
+.content-home {
+    min-height: 100vh;
+    width: 100;
+    overflow-x: hidden;
+}
+</style>
