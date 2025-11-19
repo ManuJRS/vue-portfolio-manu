@@ -1,6 +1,8 @@
 <script setup>
 import SectionWithCollapse from '@/components/sections/SectionWithCollapse.vue';
 import BaseIcon from '@/components/ui/BaseIcon.vue';
+import SectionProjectCard from '../components/sections/SectionProjectCard.vue';
+
 </script>
 
 <template>
@@ -21,6 +23,24 @@ import BaseIcon from '@/components/ui/BaseIcon.vue';
         <div class="text-center">
           <BaseIcon />
         </div>
+        <SectionProjectCard
+  link="/proyectos/movie-manager"
+  title="Movie Manager"
+  intro="Gestor de películas."
+  text="Migrado de React a Vue + servicios."
+  externalLink="https://res.cloudinary.com/dronteu5m/image/upload/v1740847346/manu%20portafolio/HOME/iyvno1ocjro6yj6ud9lz.png"
+  font="anton"
+> </SectionProjectCard>
+
+        <SectionProjectCard
+  link="/proyectos/movie-manager"
+  title="Movie Manager"
+  intro="Gestor de películas."
+  text="Migrado de React a Vue + servicios."
+  externalLink="https://res.cloudinary.com/dronteu5m/image/upload/v1740847346/manu%20portafolio/HOME/iyvno1ocjro6yj6ud9lz.png"
+  font="anton"
+> </SectionProjectCard>
+
       </b-col>
       <b-col cols="0" sm="2" class="text-center">
         <h2>container</h2>
