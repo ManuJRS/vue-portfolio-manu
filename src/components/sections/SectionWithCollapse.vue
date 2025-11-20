@@ -39,6 +39,10 @@ const props = defineProps({
     buttonOpen: {
         type: String,
         default: '@'
+    },
+    links:{
+      type: Array,
+      default: () =>[],
     }
 })
 </script>
@@ -67,8 +71,18 @@ const props = defineProps({
       variant="round"
     >
       <div class="links-col">
-        <a href="https://www.linkedin.com/in/manuel-jes%C3%BAs-rej%C3%B3n-santana-83564015a/" class="collapse-link">Linkedin <Icon icon="streamline-sharp:link-share-2" width="18" height="18" /></a>
-        <a href="https://www.upwork.com/freelancers/~0112e01210080eef35?mp_source=share" class="collapse-link">UpWork <Icon icon="streamline-sharp:link-share-2" width="18" height="18"/></a>
+        <a
+          v-for="(link, index) in links"
+          :key="index"
+          :href="link.url"
+          class="collapse-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {{ link.label }}
+          <Icon icon="streamline-sharp:link-share-2" width="18" height="18" />
+        </a>
+        
       </div>
     </BaseCollapse>
     </section>
