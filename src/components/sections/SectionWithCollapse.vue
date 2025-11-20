@@ -40,6 +40,10 @@ const props = defineProps({
         type: String,
         default: '@'
     },
+      showCollapse: {
+    type: Boolean,
+    default: true
+  },
     links:{
       type: Array,
       default: () =>[],
@@ -65,6 +69,7 @@ const props = defineProps({
         v-bind:font="h3Font"
         />
         <BaseCollapse
+      v-if="showCollapse && links.length"
       :id="collapseId"
       :buttonTextClosed="buttonClosed"
       :buttonTextOpen="buttonOpen"
