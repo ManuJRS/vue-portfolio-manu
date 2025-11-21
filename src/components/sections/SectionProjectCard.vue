@@ -11,10 +11,15 @@ const props = defineProps({
   intro: String,
   text: String,
   externalLink: String,
-  font: {
+    cardLayout: {
     type: String,
-    default: ''
+    default: 'extended'
+  },
+  imageFit: {
+    type: String,
+    default: 'cover'
   }
+
 })
 </script>
 
@@ -27,8 +32,9 @@ const props = defineProps({
       :title="title"
       :intro="intro"
       :text="text"
-      :externalLink="externalLink"
-        :font="font"
+      :external-link="externalLink"
+      :card-layout="cardLayout"
+      :image-fit="imageFit"
       />
   </RouterLink>
 </template>
