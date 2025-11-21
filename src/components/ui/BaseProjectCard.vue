@@ -21,6 +21,14 @@ const props = defineProps(
   textFont: {
     type: String,
     default: 'roboto-mono'
+  },
+  cardLayout: {
+    type: String,
+    default: 'extended'
+  },
+  imageFit: {
+    type: String,
+    default: 'cover'
   }
 }, 
 )
@@ -43,12 +51,24 @@ const titleTextFontClass = computed(() => {
   return ''
 })
 
+const cardClass = computed(() => {
+  return props.cardLayout === 'collapse'
+    ? 'Card-class-collapse'
+    : 'Card-class-extended'
+})
+
+const imageClass = computed(() => {
+  return props.imageFit === 'contain'
+    ? 'Card-img-contain'
+    : 'Card-img-cover'
+})
+
 </script>
 
 <template>
-  <BCard class="my-5 Card-class">
+  <BCard :class="['my-5', cardClass]">
     <BCardBody class="d-flex flex-column Card-body">
-      <BCardTitle  :class="['text-start', 'Card-title', titleFontClass]">
+      <BCardTitle :class="['text-start', 'Card-title', titleFontClass]">
         <h2>{{ title }}</h2>
       </BCardTitle>
 
@@ -59,9 +79,11 @@ const titleTextFontClass = computed(() => {
       </BCardText>
 
       <BCardImg
+        v-if="externalLink"
         top
         :src="externalLink"
         alt=""
+        :class="imageClass"
       />
     </BCardBody>
   </BCard>
@@ -91,7 +113,8 @@ const titleTextFontClass = computed(() => {
   font-size: 1.2rem;
 }
 
-.Card-class {
+.Card-class-collapse,
+.Card-class-extended {
   border: #5a5959 2px solid;
   border-radius: 10px;
   overflow: hidden;
@@ -99,11 +122,27 @@ const titleTextFontClass = computed(() => {
   background-color: rgba(187, 183, 183, 0.04);
   outline: 1px solid rgba(242, 242, 242, .05);
   cursor: pointer;
-  height: 50vh;
   transition: background 0.5s ease, height 1s ease;
 }
 
-.Card-class:hover {
+.Card-class-collapse {
+  height: 25vh;
+}
+
+.Card-class-extended {
+  height: 50vh;
+}
+
+.Card-class-extended:hover {
+  height: 80vh;
+  background: radial-gradient(
+    circle,
+    rgba(68, 160, 217, 0.171) 0%,
+    rgba(21, 21, 21, 0.185) 100%
+  );
+}
+
+.Card-class-collapse:hover {
   height: 80vh;
   background: radial-gradient(
     circle,
@@ -125,6 +164,7 @@ const titleTextFontClass = computed(() => {
   color: rgba(242, 242, 242, .8);
 }
 
+
 .Card-title {
   color: #f1f1f1;
   margin-top: 20px;
@@ -135,6 +175,21 @@ const titleTextFontClass = computed(() => {
 .Card-text {
   color: #f1f1f1;
 }
+
+.Card-img-cover {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  max-height: none; /* auto por defecto, puedes ajustar si quieres límite */
+}
+
+.Card-img-contain {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: 500px;
+}
+
 
 .nolink {
   text-decoration: none;
@@ -148,7 +203,8 @@ const titleTextFontClass = computed(() => {
     transform: translateY(0);
   }
 
-  .Card-class {
+  .Card-class-collapse,
+  .Card-class-extended {
   border: #5a5959 2px solid;
   border-radius: 10px;
   overflow: hidden;
@@ -156,9 +212,18 @@ const titleTextFontClass = computed(() => {
   background-color: rgba(187, 183, 183, 0.04);
   outline: 1px solid rgba(242, 242, 242, .05);
   cursor: pointer;
-  height: auto;
+  height: auto !important;
   transition: background 0.5s ease, height 1s ease;
 }
+
+  .Card-img-cover,
+  .Card-img-contain {
+    width: 100%;
+    height: auto !important;
+    object-fit: cover !important; /* o contain si quieres */
+    max-height: none !important;
+  }
+
   
 }
 </style>
