@@ -11,11 +11,28 @@ const props = defineProps({
   }
 })
 
-console.log('section.h1Uppercase →', props.section.h1Uppercase)
-
 
 const isContentIntro = (s) => s.__component === 'components.content-intro'
 const isIconArrow = (s) => s.__component === 'components.incon-arrrow'
+const isCardPreview = (s) => s.__component === 'components.card-preview'
+
+const getImageUrl = (section) => {
+  if (!section?.image) return ''
+
+  const baseUrl = import.meta.env.VITE_STRAPI_URL || ''
+  const formats = section.image.formats || {}
+ const url =
+    section.image.url ||
+    formats.large?.url ||
+    formats.medium?.url ||
+    formats.small?.url ||
+    formats.thumbnail?.url
+if (!url) return ''
+if (url.startsWith('http://') || url.startsWith('https://')) {
+    return url
+  }
+    return `${baseUrl}${url}`
+}
 </script>
 
 <template>
@@ -48,14 +65,19 @@ const isIconArrow = (s) => s.__component === 'components.incon-arrrow'
 </div>
 
 <BaseProjectCard
-    v-else-if="section.__component === 'components.section-project-card'"
-    :link="section.link"
-    :title="section.title"
-    :intro="section.intro"
-    :text="section.text"
+  v-else-if="isCardPreview(section)"
+  :link="section.link"
+  :title="section.title"
+  :intro="section.intro"
+  :text="section.text"
+  :external-link="getImageUrl(section)"
+  :font="section.font"
+  :card-layout="section.cardLayout || 'extended'"
+  :image-fit="section.imageFit || 'cover'"
+/>
 
-    :font="section.font"
-  />
+
+  
 
   <div v-else class="my-4">
     <p>
