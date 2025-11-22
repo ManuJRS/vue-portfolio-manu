@@ -1,25 +1,34 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
-    { path: '/', redirect: '/projects' },
     {
-        path: '/projects',
-        name: 'projects',
+        path: '/',
+        name: 'home',
         component: () => import('@/pages/ProjectsPage.vue'),
         meta: { title: 'Proyectos' }
     },
+
     {
         path: '/info',
         name: 'info',
-        component: () => import('../pages/InfoPage.vue'),
+        component: () => import('@/pages/InfoPage.vue'),
         meta: { title: 'Información' }
     },
+
+    {
+        path: '/:slug',
+        name: 'project-detail',
+        component: () => import('@/pages/ProjectDetailPage.vue'),
+        props: true
+    },
+
     {
         path: '/:pathMatch(.*)*',
         name: 'not-found',
-        component: () => import('../pages/NotFound.vue'),
+        component: () => import('@/pages/NotFound.vue'),
         meta: { title: 'Página no encontrada' }
     }
+
 ];
 
 const router = createRouter({
