@@ -8,7 +8,7 @@ const props = defineProps({
 
 <template>
   <div>
-    <h2 class="mb-3">{{ title }}</h2>
+    <h2 class="mb-3 roboto-mono-skills">{{ title }}</h2>
 
     <div class="skills-card p-3">
       <div
@@ -49,6 +49,17 @@ const props = defineProps({
   border-bottom: none;
 }
 .skill-text {
-  font-size: 0.98rem;
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-size: clamp(1.4rem, 0.8rem + 1.3vw, 1.5rem);
+}
+.roboto-mono-skills {
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: clamp(1.4rem, 1.2rem + 2vw, 2.2rem);
+  color: #fff !important;
 }
 </style>

@@ -92,12 +92,12 @@ onMounted(() => {
 }
 
 .media-link {
-  color: #fff;
+  color: #4da3ff;
   text-decoration: none;
   font-weight: 500;
 }
 
 .media-link:hover {
-  opacity: 0.8;
+  color: #1e90ff;
 }
 </style>
