@@ -4,6 +4,10 @@ import BaseIcon from '@/components/ui/BaseIcon.vue'
 import BaseProjectCard from '@/components/sections/SectionProjectCard.vue'
 import SectionIntro from '@/components/sections/SectionIntro.vue'
 import TitleDivisorSection from '@/components/sections/TitleDivisorSection.vue'
+import CardMediaSection from '../sections/CardMediaSection.vue'
+import { getMediaUrl } from '../../utils/media'
+import ProjectDescriptionSection from '../sections/ProjectDescriptionSection.vue'
+import ContentTextListSection from '../sections/ContentTextListSection.vue'
 
 const props = defineProps({
   section: {
@@ -12,14 +16,14 @@ const props = defineProps({
   }
 })
 
-
 const isContentIntro = (s) => s.__component === 'components.content-intro'
 const isIconArrow = (s) => s.__component === 'components.incon-arrrow'
 const isCardPreview = (s) => s.__component === 'components.card-preview'
 const isIntroProject = (s) => s.__component === 'components.intro-project'
 const isTitleDivisor = (s) => s.__component === 'components.title-divisor';
-
-
+const isCardMedia = (s) => s.__component === 'components.cardmedia';
+const isDescriptionProject = (s) => s.__component === 'components.description-project';
+const isContentTextList = (s) => s.__component === 'components.content-text-list';
 
 const getImageUrl = (section) => {
   if (!section?.image) return ''
@@ -101,7 +105,33 @@ const mapLevel = (level) => {
   v-else-if="isTitleDivisor(section)"
   :title="section.titleDivisor"
 />
-  
+
+<CardMediaSection
+    v-else-if="isCardMedia(section)"
+    :media-url="getMediaUrl(section.media)"
+    :alt-title="section.media?.alternativeText || section.media?.name || ''"
+    :link-url="section.linkurl || ''"
+    :link-text="section.linktext || ''"
+/>
+
+<ProjectDescriptionSection
+  v-else-if="isDescriptionProject(section)"
+  :title="section.title || 'Descripción del proyecto'" 
+  :role-label="section.rol || 'Mi papel'"
+  :role-text="section.roltext || ''"
+  :stack-label="section.stack || 'Tecnología utilizada'"
+  :stack-text="section.stacktext || ''"
+  :time-label="section.time || 'Tiempo total'"
+  :time-text="section.timetext || ''"
+  :description="section.textdescription || ''"
+/>
+
+<ContentTextListSection
+  v-else-if="isContentTextList(section)"
+  :description="section.Text || ''"
+  :show-list="section.showlist ?? true"
+  :items="section.list || []"
+/>
 
   <div v-else class="my-4">
     <p>

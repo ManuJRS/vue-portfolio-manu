@@ -1,7 +1,7 @@
 const BASE_URL = import.meta.env.VITE_STRAPI_URL;
 
 export async function fetchProjectBySlug(slug) {
-    const url = `${BASE_URL}/api/projects?filters[slug][$eq]=${slug}&populate=*`;
+    const url = `${BASE_URL}/api/projects?filters[slug][$eq]=${slug}&populate[componentes][populate]=*`;
     const res = await fetch(url);
 
     if (!res.ok) {
