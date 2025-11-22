@@ -2,7 +2,8 @@
 import SectionWithCollapse from '@/components/sections/SectionWithCollapse.vue'
 import BaseIcon from '@/components/ui/BaseIcon.vue'
 import BaseProjectCard from '@/components/sections/SectionProjectCard.vue'
-
+import SectionIntro from '@/components/sections/SectionIntro.vue'
+import TitleDivisorSection from '@/components/sections/TitleDivisorSection.vue'
 
 const props = defineProps({
   section: {
@@ -15,6 +16,10 @@ const props = defineProps({
 const isContentIntro = (s) => s.__component === 'components.content-intro'
 const isIconArrow = (s) => s.__component === 'components.incon-arrrow'
 const isCardPreview = (s) => s.__component === 'components.card-preview'
+const isIntroProject = (s) => s.__component === 'components.intro-project'
+const isTitleDivisor = (s) => s.__component === 'components.title-divisor';
+
+
 
 const getImageUrl = (section) => {
   if (!section?.image) return ''
@@ -32,6 +37,13 @@ if (url.startsWith('http://') || url.startsWith('https://')) {
     return url
   }
     return `${baseUrl}${url}`
+}
+
+const mapLevel = (level) => {
+  if (level === 'h1') return 1
+  if (level === 'h2') return 2
+  if (level === 'h3') return 3
+  return 2 // default h2
 }
 </script>
 
@@ -66,6 +78,7 @@ if (url.startsWith('http://') || url.startsWith('https://')) {
 
 <BaseProjectCard
   v-else-if="isCardPreview(section)"
+  :slug="section.project?.slug"
   :link="section.link"
   :title="section.title"
   :intro="section.intro"
@@ -76,12 +89,23 @@ if (url.startsWith('http://') || url.startsWith('https://')) {
   :image-fit="section.imageFit || 'cover'"
 />
 
+  <SectionIntro
+    v-else-if="isIntroProject(section)"
+    :title="section.titleIntro"
+    :description="section.textIntro"
+    :level="mapLevel(section.level)"
+    :uppercase="section.uppercase ?? false"
+  />
 
+<TitleDivisorSection
+  v-else-if="isTitleDivisor(section)"
+  :title="section.titleDivisor"
+/>
   
 
   <div v-else class="my-4">
     <p>
-      Zona dinámica no soportada todavía:
+      El render no funciona para:
       <strong>{{ section.__component }}</strong>
     </p>
   </div>
