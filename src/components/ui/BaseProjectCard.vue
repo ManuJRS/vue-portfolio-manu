@@ -118,7 +118,7 @@ const imageClass = computed(() => {
   border: #5a5959 2px solid;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.671);
+  box-shadow: 0 30px 50px rgba(0, 0, 0, 0.671);
   background-color: rgba(187, 183, 183, 0.04);
   outline: 1px solid rgba(242, 242, 242, .05);
   cursor: pointer;
@@ -208,7 +208,7 @@ const imageClass = computed(() => {
   border: #5a5959 2px solid;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.671);
+  box-shadow: 0 30px 50px rgba(0, 0, 0, 0.671);
   background-color: rgba(187, 183, 183, 0.04);
   outline: 1px solid rgba(242, 242, 242, .05);
   cursor: pointer;

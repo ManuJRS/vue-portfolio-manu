@@ -29,3 +29,15 @@ export async function fetchInfo() {
     const json = await res.json();
     return json.data; // single type
 }
+
+
+export async function fetchLayout() {
+    const res = await fetch(`${BASE_URL}/api/layout?populate[navItems]=*`)
+
+    if (!res.ok) {
+        throw new Error('Error fetching layout')
+    }
+
+    const json = await res.json()
+    return json.data
+}

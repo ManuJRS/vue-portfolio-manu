@@ -49,7 +49,7 @@ const props = defineProps({
   overflow: hidden;
   background-color: rgba(187, 183, 183, 0.04);
   outline: 1px solid rgba(242, 242, 242, 0.05);
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.67);
+  box-shadow: 0 30px 50px rgba(0, 0, 0, 0.67);
   padding: 1.5rem;
   max-width: 1050px;
   margin: 0 auto;
