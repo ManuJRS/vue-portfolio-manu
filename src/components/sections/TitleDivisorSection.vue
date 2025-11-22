@@ -41,4 +41,14 @@ const props = defineProps({
   box-shadow: 0 40px 80px rgba(0, 0, 0, 0.67);
   outline: 1px solid rgba(242, 242, 242, 0.05);
 }
+
+@media (max-width: 768px) {
+.anton-regular {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-size: calc(1.3rem + .6vw);
+  font-style: normal;
+  letter-spacing: 2px;
+}
+}
 </style>

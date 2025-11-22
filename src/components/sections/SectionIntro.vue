@@ -26,14 +26,19 @@ const HeadingTag = computed(() => `h${props.level}`);
     >
       {{ title }}
     </component>
-
-    <p class="fs-5 text-white-50 roboto-mono">
+    <div class="description-box">
+<p class="fs-5 text-white-50 roboto-mono description-box">
       {{ description }}
     </p>
+    </div>
   </div>
 </template>
 
 <style scoped>
+.description-box {
+  max-width: 950px;
+  margin: 0 auto;
+}
 .anton-regular {
   font-family: "Anton", sans-serif;
   font-weight: 400;

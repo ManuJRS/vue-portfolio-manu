@@ -21,7 +21,7 @@ const props = defineProps({
       <div class="desc-list-body d-flex flex-column align-items-start">
         <p
           v-if="description"
-          class="text-description mb-4 text-start roboto-mono"
+          class="text-description roboto-mono"
         >
           {{ description }}
         </p>
@@ -67,5 +67,12 @@ const props = defineProps({
   color: #f5f5f5;
   font-size: 1rem;
   line-height: 1.7;
+  text-align: justify;
+}
+
+@media (max-width: 768px) {
+  .text-description {
+    text-align: left;
+  }
 }
 </style>

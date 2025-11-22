@@ -30,7 +30,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="text-center my-5">
+  <div class="text-center my-5 description-row">
 
     <!-- Tres columnas -->
     <div class="row my-5">
@@ -66,6 +66,11 @@ const props = defineProps({
 </template>
 
 <style scoped>
+.description-row {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
 .title-description {
   font-size: 2rem;
   font-weight: 600;
@@ -109,5 +114,12 @@ const props = defineProps({
   font-weight: 300;
   font-style: normal;
   color: #fff;
+}
+
+@media (max-width: 768px) {
+.title-description {
+  font-size: 1.7rem;
+  font-weight: 600;
+}
 }
 </style>
