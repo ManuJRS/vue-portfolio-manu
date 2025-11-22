@@ -77,7 +77,8 @@ const mapLevel = (level) => {
   />
 
 <div v-else-if="isIconArrow(section)" class="my-4">
-  <BaseIcon :label="section.textArrow" />
+  <BaseIcon 
+  :text="section.textArrow" />
 </div>
 
 <BaseProjectCard
