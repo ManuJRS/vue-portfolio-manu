@@ -1,17 +1,22 @@
 <script setup>
-import { RouterLink } from 'vue-router'
-import BaseProjectCard from '@/components/ui/BaseProjectCard.vue'
+import { computed } from 'vue';
+import { RouterLink } from 'vue-router';
+import BaseProjectCard from '@/components/ui/BaseProjectCard.vue';
 
 const props = defineProps({
+  slug: {
+    type: String,
+    default: ''
+  },
   link: {
     type: [String, Object],
-    required: true
+    default: null
   },
   title: String,
   intro: String,
   text: String,
   externalLink: String,
-    cardLayout: {
+  cardLayout: {
     type: String,
     default: 'extended'
   },
@@ -19,14 +24,21 @@ const props = defineProps({
     type: String,
     default: 'cover'
   }
+});
 
-})
+const resolvedLink = computed(() => {
+  if (props.slug) {
+    return { name: 'project-detail', params: { slug: props.slug } };
+  }
+
+  return props.link || '/';
+});
 </script>
 
 <template>
   <RouterLink
     class="nolink"
-    :to="link"
+    :to="resolvedLink"
   >
     <BaseProjectCard
       :title="title"
@@ -35,7 +47,7 @@ const props = defineProps({
       :external-link="externalLink"
       :card-layout="cardLayout"
       :image-fit="imageFit"
-      />
+    />
   </RouterLink>
 </template>
 
