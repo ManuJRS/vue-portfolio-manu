@@ -12,7 +12,6 @@ export function useHomePage() {
 
     try {
       home.value = await fetchHomePage()
-
     } catch (err) {
       console.error(err)
       error.value = err?.message || 'Error al cargar la página'
@@ -27,6 +26,6 @@ export function useHomePage() {
     home,
     loading,
     error,
-    reload: loadHome,
+    reload: loadHome
   }
 }
