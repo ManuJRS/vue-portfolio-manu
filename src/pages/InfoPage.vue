@@ -3,10 +3,21 @@ import { useInfoPage } from '@/composables/useInfoPage'
 import InfoImageIntro from '@/components/info/InfoImageIntro.vue'
 import InfoDescription from '@/components/info/InfoDescription.vue'
 import InfoSkills from '@/components/info/InfoSkills.vue'
+import { useSeo } from '@/composables/useSeo'
+import SeoHead from '@/components/seo/SeoHead.vue'
+
 const { info, loading, error, getMediaUrl } = useInfoPage()
+
+const { seoProps } = useSeo(info, {
+  fallbackTitle: 'Info'
+  // si en tu Single Type el campo se llamara distinto,
+  // por ejemplo "seoInfo", usar:
+  // seoKey: 'seoInfo'
+})
 </script>
 
 <template>
+  <SeoHead v-bind="seoProps" />
   <b-container fluid class="content-info">
     <b-row class="justify-content-center my-4">
       <b-col cols="12" md="10" lg="8" class="text-white">

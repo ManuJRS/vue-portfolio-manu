@@ -42,4 +42,5 @@ export function useInfoPage() {
         getMediaUrl,
         reload: load
     }
+
 }
