@@ -1,11 +1,18 @@
 <script setup>
 import { Icon } from '@iconify/vue';
 
+const props = defineProps({
+  text: {
+    type: String,
+    required: true
+  }
+})
+
 </script>
 
 <template>
 <div class="fetured-arrow">
-    <h2 class="feture-arrow_label">Destacados</h2>
+    <h2 class="feture-arrow_label">{{text}}</h2>
 <Icon class="feature-arrow_icon" icon="material-symbols:arrow-downward-rounded" width="32" height="32" />
 </div>
 </template>
