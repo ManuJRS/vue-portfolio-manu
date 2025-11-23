@@ -20,6 +20,13 @@ const { seoProps } = useSeo(project, {
     'Proyecto'
 })
 
+const props = defineProps({
+  slug: {
+    type: String,
+    required: true
+  }
+})
+
 </script>
 
 <template>
