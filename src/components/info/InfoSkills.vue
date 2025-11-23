@@ -62,4 +62,14 @@ const props = defineProps({
   font-size: clamp(1.4rem, 1.2rem + 2vw, 2.2rem);
   color: #fff !important;
 }
+
+@media (max-width: 768px) {
+.skills-card {
+  border: #5a5959 2px solid;
+  border-radius: 10px;
+  background-color: rgba(187, 183, 183, 0.04);
+  outline: 1px solid rgba(242, 242, 242, 0.05);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.67);
+}
+}
 </style>
