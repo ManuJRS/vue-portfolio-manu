@@ -37,9 +37,5 @@ const router = createRouter({
     scrollBehavior() { return { top: 0 }; }
 });
 
-// Título por ruta
-router.afterEach((to) => {
-    document.title = (to.meta?.title ? `${to.meta.title} | Portafolio` : 'Portafolio');
-});
 
 export default router;

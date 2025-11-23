@@ -5,7 +5,6 @@ export function useHomePage() {
   const home = ref(null)
   const loading = ref(false)
   const error = ref(null)
-
   const loadHome = async () => {
     loading.value = true
     error.value = null

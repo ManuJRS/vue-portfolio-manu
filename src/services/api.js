@@ -19,7 +19,6 @@ export async function fetchProjectBySlug(slug) {
 
     if (!item) return null
 
-    console.log('PROJECT JSON:', item) // 👈 para que veas que viene "seo"
 
     // en Strapi 5 tus datos vienen planos, así que esto está OK
     const { id, ...rest } = item
