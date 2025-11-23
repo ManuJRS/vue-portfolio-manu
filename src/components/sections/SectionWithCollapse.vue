@@ -55,7 +55,7 @@ const props = defineProps({
     <section class="section-wrap">
         <BaseHeading
         v-bind:level="2"
-        v-bind:text="h2"
+        v-bind:text="h2 || ''"
         />
         <BaseHeading
         v-bind:level="1"
