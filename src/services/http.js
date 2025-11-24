@@ -1,5 +1,5 @@
 const baseURL = import.meta.env.VITE_STRAPI_URL
-const apiBase = `${baseURL}/api`
+const apiBase = `${baseURL}api`
 
 
 export async function apiFetch(path, options = {}) {
