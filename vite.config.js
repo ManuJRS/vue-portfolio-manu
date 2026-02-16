@@ -3,8 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import path from 'path'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
-
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [
     vue(),
     mode === 'development' && vueDevTools(),
@@ -14,4 +13,4 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-})
+}))
