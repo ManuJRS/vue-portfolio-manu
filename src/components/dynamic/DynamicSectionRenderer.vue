@@ -12,35 +12,35 @@ import ContentTextListSection from '../sections/ContentTextListSection.vue'
 const props = defineProps({
   section: {
     type: Object,
-    required: true
-  }
+    required: true,
+  },
 })
 
 const isContentIntro = (s) => s.__component === 'components.content-intro'
 const isIconArrow = (s) => s.__component === 'components.incon-arrrow'
 const isCardPreview = (s) => s.__component === 'components.card-preview'
 const isIntroProject = (s) => s.__component === 'components.intro-project'
-const isTitleDivisor = (s) => s.__component === 'components.title-divisor';
-const isCardMedia = (s) => s.__component === 'components.cardmedia';
-const isDescriptionProject = (s) => s.__component === 'components.description-project';
-const isContentTextList = (s) => s.__component === 'components.content-text-list';
+const isTitleDivisor = (s) => s.__component === 'components.title-divisor'
+const isCardMedia = (s) => s.__component === 'components.cardmedia'
+const isDescriptionProject = (s) => s.__component === 'components.description-project'
+const isContentTextList = (s) => s.__component === 'components.content-text-list'
 
 const getImageUrl = (section) => {
   if (!section?.image) return ''
 
   const baseUrl = import.meta.env.VITE_STRAPI_URL || ''
   const formats = section.image.formats || {}
- const url =
+  const url =
     section.image.url ||
     formats.large?.url ||
     formats.medium?.url ||
     formats.small?.url ||
     formats.thumbnail?.url
-if (!url) return ''
-if (url.startsWith('http://') || url.startsWith('https://')) {
+  if (!url) return ''
+  if (url.startsWith('http://') || url.startsWith('https://')) {
     return url
   }
-    return `${baseUrl}${url}`
+  return `${baseUrl}${url}`
 }
 
 const mapLevel = (level) => {
@@ -52,47 +52,51 @@ const mapLevel = (level) => {
 </script>
 
 <template>
-
   <SectionWithCollapse
     v-if="isContentIntro(section)"
     :h2="section.titleh2"
     :h1="section.titleh1"
     :h3="section.titleh3"
-    :showCollapse="section.showCollapse ?? true"
-    :h1Uppercase="section.h1Uppercase ?? true"
-  :h1Font="section.h1Font || 'anton'"
-  :h3Font="section.h3Font || 'roboto-mono'"
-    :externalLink="section.externalLink"
-    collapseId="collapse-links"
-    buttonClosed="@"
-    buttonOpen="@"
-  :links="[
-    section.linkUrl1 && section.linkLabel1
-      ? { label: section.linkLabel1, url: section.linkUrl1 }
-      : null,
-    section.linkUrl2 && section.linkLabel2
-      ? { label: section.linkLabel2, url: section.linkUrl2 }
-      : null
-  ].filter(Boolean)"
+    :show-collapse="section.showCollapse ?? true"
+    :h1-uppercase="section.h1Uppercase ?? true"
+    :h1-font="section.h1Font || 'anton'"
+    ,
+    :h3-font="section.h3Font || 'roboto-mono'"
+    :external-link="section.externalLink"
+    collapse-id="collapse-links"
+    button-closed="@"
+    button-open="@"
+    :links="
+      [
+        section.linkUrl1 && section.linkLabel1
+          ? { label: section.linkLabel1, url: section.linkUrl1 }
+          : null,
+        section.linkUrl2 && section.linkLabel2
+          ? { label: section.linkLabel2, url: section.linkUrl2 }
+          : null,
+        section.linkUrl3 && section.linkLabel3
+          ? { label: section.linkLabel3, url: section.linkUrl3 }
+          : null,
+      ].filter(Boolean)
+    "
   />
 
-<div v-else-if="isIconArrow(section)" class="my-4">
-  <BaseIcon 
-  :text="section.textArrow" />
-</div>
+  <div v-else-if="isIconArrow(section)" class="my-4">
+    <BaseIcon :text="section.textArrow" />
+  </div>
 
-<BaseProjectCard
-  v-else-if="isCardPreview(section)"
-  :slug="section.project?.slug"
-  :link="section.link"
-  :title="section.title"
-  :intro="section.intro"
-  :text="section.text"
-  :external-link="getImageUrl(section)"
-  :font="section.font"
-  :card-layout="section.cardLayout || 'extended'"
-  :image-fit="section.imageFit || 'cover'"
-/>
+  <BaseProjectCard
+    v-else-if="isCardPreview(section)"
+    :slug="section.project?.slug"
+    :link="section.link"
+    :title="section.title"
+    :intro="section.intro"
+    :text="section.text"
+    :external-link="getImageUrl(section)"
+    :font="section.font"
+    :card-layout="section.cardLayout || 'extended'"
+    :image-fit="section.imageFit || 'cover'"
+  />
 
   <SectionIntro
     v-else-if="isIntroProject(section)"
@@ -102,37 +106,34 @@ const mapLevel = (level) => {
     :uppercase="section.uppercase ?? false"
   />
 
-<TitleDivisorSection
-  v-else-if="isTitleDivisor(section)"
-  :title="section.titleDivisor"
-/>
+  <TitleDivisorSection v-else-if="isTitleDivisor(section)" :title="section.titleDivisor" />
 
-<CardMediaSection
+  <CardMediaSection
     v-else-if="isCardMedia(section)"
     :media-url="getMediaUrl(section.media)"
     :alt-title="section.media?.alternativeText || section.media?.name || ''"
     :link-url="section.linkurl || ''"
     :link-text="section.linktext || ''"
-/>
+  />
 
-<ProjectDescriptionSection
-  v-else-if="isDescriptionProject(section)"
-  :title="section.title || 'Descripción del proyecto'" 
-  :role-label="section.rol || 'Mi papel'"
-  :role-text="section.roltext || ''"
-  :stack-label="section.stack || 'Tecnología utilizada'"
-  :stack-text="section.stacktext || ''"
-  :time-label="section.time || 'Tiempo total'"
-  :time-text="section.timetext || ''"
-  :description="section.textdescription || ''"
-/>
+  <ProjectDescriptionSection
+    v-else-if="isDescriptionProject(section)"
+    :title="section.title || 'Descripción del proyecto'"
+    :role-label="section.rol || 'Mi papel'"
+    :role-text="section.roltext || ''"
+    :stack-label="section.stack || 'Tecnología utilizada'"
+    :stack-text="section.stacktext || ''"
+    :time-label="section.time || 'Tiempo total'"
+    :time-text="section.timetext || ''"
+    :description="section.textdescription || ''"
+  />
 
-<ContentTextListSection
-  v-else-if="isContentTextList(section)"
-  :description="section.Text || ''"
-  :show-list="section.showlist ?? true"
-  :items="section.list || []"
-/>
+  <ContentTextListSection
+    v-else-if="isContentTextList(section)"
+    :description="section.Text || ''"
+    :show-list="section.showlist ?? true"
+    :items="section.list || []"
+  />
 
   <div v-else class="my-4">
     <p>
