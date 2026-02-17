@@ -60,7 +60,6 @@ const mapLevel = (level) => {
     :show-collapse="section.showCollapse ?? true"
     :h1-uppercase="section.h1Uppercase ?? true"
     :h1-font="section.h1Font || 'anton'"
-    ,
     :h3-font="section.h3Font || 'roboto-mono'"
     :external-link="section.externalLink"
     collapse-id="collapse-links"
